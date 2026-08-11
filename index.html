@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToolsThatYouNeed</title>
+    <title>AppThatYouNeed</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,600&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
@@ -13,7 +13,97 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-        } 
+            overflow-x: hidden;
+            position: relative;
+            background-image:
+                radial-gradient(circle, rgba(50,37,107,0.13) 1.4px, transparent 1.4px);
+            background-size: 28px 28px;
+        }
+
+        /* ---- Decorative geometry layer ---- */
+        .geo-field {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .geo {
+            position: absolute;
+            opacity: 0.9;
+        }
+        .geo-triangle {
+            width: 0;
+            height: 0;
+            border-left: 22px solid transparent;
+            border-right: 22px solid transparent;
+            border-bottom: 38px solid #ff8552;
+        }
+        .geo-circle-outline {
+            border-radius: 50%;
+            border: 4px solid #32256b;
+        }
+        .geo-circle-fill {
+            border-radius: 50%;
+            background-color: #ffd23f;
+        }
+        .geo-square {
+            border: 4px solid #ff8552;
+            transform: rotate(18deg);
+        }
+        .geo-plus {
+            position: absolute;
+        }
+        .geo-plus::before,
+        .geo-plus::after {
+            content: "";
+            position: absolute;
+            background-color: #32256b;
+        }
+        .geo-plus::before {
+            width: 26px;
+            height: 4px;
+            top: 11px;
+            left: 0;
+        }
+        .geo-plus::after {
+            width: 4px;
+            height: 26px;
+            top: 0;
+            left: 11px;
+        }
+        .geo-dash {
+            border-bottom: 4px dashed #32256b;
+        }
+
+        @keyframes drift {
+            0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
+            50% { transform: translateY(-16px) rotate(var(--r, 0deg)); }
+        }
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .geo-float { animation: drift 6s ease-in-out infinite; }
+        .geo-spin { animation: spin-slow 18s linear infinite; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .geo-float, .geo-spin { animation: none; }
+        }
+
+        .hero, .help, .tool-button {
+            position: relative;
+            z-index: 1;
+        }
+
+        .scribble-underline {
+            display: block;
+            margin-top: -1.5rem;
+            margin-left: 10.5rem;
+        }
         .hero {
             font-family: 'Fraunces', serif;
             font-size: 6rem;
@@ -132,6 +222,41 @@
             top: -1rem;
             text-indent: 1rem;
         }
+        .side-panel {
+            overflow: visible;
+        }
+        .logo-frame {
+            position: relative;
+            width: 100px;
+            margin-bottom: 1rem;
+        }
+        .logo-frame::before {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: -10px;
+            width: 100px;
+            height: 100px;
+            border: 4px solid #ff8552;
+            border-radius: 1rem;
+            transform: rotate(-8deg);
+            z-index: 0;
+        }
+        .logo-frame img {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 0;
+        }
+        .side-panel::after {
+            content: "";
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: #ffd23f;
+            bottom: 30px;
+            right: 24px;
+        }
         .description {
             font-family: 'Outfit', sans-serif;
             font-size: 1rem;
@@ -142,7 +267,23 @@
     </style>
 </head>
 <body>
+    <div class="geo-field" aria-hidden="true">
+        <div class="geo geo-triangle geo-float" style="top: 4rem; left: 4rem; --r: -12deg; transform: rotate(-12deg);"></div>
+        <div class="geo geo-circle-outline geo-float" style="width: 60px; height: 60px; top: 9rem; left: 2.5rem; animation-delay: .8s;"></div>
+        <div class="geo geo-circle-fill geo-float" style="width: 18px; height: 18px; top: 3.5rem; left: 46%; animation-delay: 1.4s;"></div>
+        <div class="geo geo-plus geo-float" style="top: 15rem; left: 6rem; animation-delay: .3s;"></div>
+        <div class="geo geo-square geo-spin" style="width: 34px; height: 34px; top: 7rem; right: 22rem;"></div>
+        <div class="geo geo-triangle geo-float" style="top: 22rem; right: 26rem; transform: rotate(150deg); animation-delay: 1.1s;"></div>
+        <div class="geo geo-circle-fill geo-float" style="width: 30px; height: 30px; background-color: #ff8552; top: 26rem; left: 8rem; animation-delay: .6s;"></div>
+        <div class="geo geo-dash" style="width: 90px; top: 20rem; left: 12rem; transform: rotate(-6deg);"></div>
+        <div class="geo geo-plus geo-float" style="top: 26.5rem; left: 40%; animation-delay: 1.6s;"></div>
+        <div class="geo geo-circle-outline geo-float" style="width: 26px; height: 26px; top: 5rem; left: 60%; animation-delay: 1.9s;"></div>
+    </div>
+
     <h1 class="hero">Tools that actually <br><span class="hero2">Work.</span></h1>
+    <svg class="scribble-underline" width="220" height="24" viewBox="0 0 220 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M4 16C40 4 80 4 110 14C140 24 180 6 216 12" stroke="#ff8552" stroke-width="5" stroke-linecap="round"/>
+    </svg>
     <p class="help">Stop wasting hours searching for the right software. This collection features five tools built specifically with students in mind, providing everything you need to manage your time effectively, boost your focus, and stay on top of your tasks this semester.</p>
     
     <button class="tool-button" onclick="showPanel('panel-1')">Habitica</button>
@@ -153,7 +294,7 @@
     <button class="tool-button" onclick="closeAllPanels()">Close</button>
 
     <div id="panel-1" class="side-panel">
-    <img src="habitica.jpg" alt="HabiticaLogo">
+    <div class="logo-frame"><img src="habitica.jpg" alt="HabiticaLogo"></div>
     <h2 class="title">Habitica</h2>
     <p class="description">This is a simple description for Habitica.</p>
     <a class="more-about-link" href="habitica.html">More about Habitica</a>
@@ -161,7 +302,7 @@
     </div>
 
     <div id="panel-2" class="side-panel">
-    <img src="thetawave.jpg" alt="ThetawaveAILogo">
+    <div class="logo-frame"><img src="thetawave.jpg" alt="ThetawaveAILogo"></div>
     <h2 class="title">Thetawave AI</h2>
     <p class="description">This is a simple description for Thetawave AI.</p>
     <a class="more-about-link" href="thetawave.html">More about Thetawave AI</a>
@@ -169,7 +310,7 @@
     </div>
 
     <div id="panel-3" class="side-panel">
-    <img src="piktochart.jpg" alt="PiktochartLogo">
+    <div class="logo-frame"><img src="piktochart.jpg" alt="PiktochartLogo"></div>
     <h2 class="title">Piktochart</h2>
     <p class="description">This is a simple description for Piktochart.</p>
     <a class="more-about-link" href="piktochart.html">More about Piktochart</a>
@@ -177,7 +318,7 @@
     </div>
 
     <div id="panel-4" class="side-panel">
-    <img src="lexielearn.jpg" alt="LexieLearnLogo">
+    <div class="logo-frame"><img src="lexielearn.jpg" alt="LexieLearnLogo"></div>
     <h2 class="title">LexieLearn</h2>
     <p class="description">This is a simple description for LexieLearn.</p>
     <a class="more-about-link" href="lexielearn.html">More about LexieLearn</a>
@@ -185,7 +326,7 @@
     </div>
 
     <div id="panel-5" class="side-panel">
-    <img src="forks.jpg" alt="ForksAILogo">
+    <div class="logo-frame"><img src="forks.jpg" alt="ForksAILogo"></div>
     <h2 class="title">Forks AI</h2>
     <p class="description">This is a simple description for Forks AI.</p>
     <a class="more-about-link" href="forks.html">More about Forks AI</a>
