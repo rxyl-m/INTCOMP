@@ -6,10 +6,15 @@
     <title>About Us</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
         .link-button {
-            display: inline-block;
+            position: absolute;
+            top: 30rem;
+            left: 43.5%;
             font-family: 'Outfit', sans-serif;
-            font-size: 0.9rem;
+            font-size: 1.5rem;
             background-color: #ffffff;
             color: #2b2b2b;
             border: 3px solid #32256b;
@@ -18,14 +23,69 @@
             font-weight: 600;
             text-decoration: none;
             cursor: pointer;
+            position: relative;
+            z-index: 1;
         }
         .link-button:hover {
             background-color: #32256b;
             color: #ffffff;
         }
+
+        .page-title {
+            font-family: 'Fraunces', serif;
+            font-weight: 700;
+            font-size: 2rem;
+            color: #32256b;
+            margin: 0 0 1rem 0;
+            text-align: center;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            width: 80%;
+            max-width: 1100px;
+            margin: 3rem auto 2rem auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 2rem;
+            width: 100%;
+        }
+
+        .member-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+
+        .member-card img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 1.2rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .member-name {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1.4rem;
+            color: #2b2b2b;
+            margin: 0;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
+    <script src="loading-screen.js" defer></script>
     <div class="geo-field" aria-hidden="true">
         <div class="geo geo-triangle geo-float" style="top: 4rem; left: 4rem; --r: -12deg; transform: rotate(-12deg);"></div>
         <div class="geo geo-circle-outline geo-float" style="width: 60px; height: 60px; top: 9rem; left: 2.5rem; animation-delay: .8s;"></div>
@@ -38,6 +98,33 @@
         <div class="geo geo-plus geo-float" style="top: 26.5rem; left: 40%; animation-delay: 1.6s;"></div>
         <div class="geo geo-circle-outline geo-float" style="width: 26px; height: 26px; top: 5rem; left: 60%; animation-delay: 1.9s;"></div>
     </div>
-    <a class="link-button" href="index.html" style="position: relative; top: 1rem; left: 1rem;">Back to Home</a>
+
+
+    <a class="link-button" href="main.html" style="margin: 1rem;">Main Topic</a>
+    <div class="container">
+        <h2 class="page-title">Members of the team</h2>
+        <div class="team-grid">
+            <div class="member-card">
+                <img src="habitica.jpg" alt="Member 1 photo">
+                <p class="member-name">Trisha Akemi J. Oeda</p>
+            </div>
+            <div class="member-card">
+                <img src="piktochart.jpg" alt="Member 2 photo">
+                <p class="member-name">John Patrick D. Maninang</p>
+            </div>
+            <div class="member-card">
+                <img src="forks.jpg" alt="Member 3 photo">
+                <p class="member-name">Neon Jacob C. Pagsinuhin</p>
+            </div>
+            <div class="member-card">
+                <img src="lexielearn.jpg" alt="Member 4 photo">
+                <p class="member-name">Ruel R. Catolos Jr.</p>
+            </div>
+            <div class="member-card">
+                <img src="thetawave.jpg" alt="Member 5 photo">
+                <p class="member-name">Gilbert S. Hilario</p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

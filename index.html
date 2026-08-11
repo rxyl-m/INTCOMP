@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToolsThatYouNeed</title>
+    <title>LandingPage</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,600&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
@@ -122,12 +122,13 @@
         }
         .help {
             font-family: 'Outfit', sans-serif;
-            font-size: 1rem;
+            font-size: 1.5rem;
             color: #535353;
             position: relative;
-            top: -6rem;
+            top: -8.5rem;
             margin-left: 10rem;
             max-width: 600px;
+            text-indent: 2rem;
         }
         
         .side-panel {
@@ -153,118 +154,62 @@
         .side-panel:hover {
         transform: rotate(355deg) scale(1.05);
         }
-        button {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.9rem;
-            background-color: #ffffff;
-            color: #2b2b2b;
-            border: 3px solid #32256b;
-            border-radius: 5rem;
-            padding: 0.5rem 1rem;
-            font-weight: 600;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #32256b;
-            color: #ffffff;
-        }
         .link-button {
             display: inline-block;
             font-family: 'Outfit', sans-serif;
-            font-size: 0.9rem;
+            font-size: 1.5rem;
             background-color: #ffffff;
             color: #2b2b2b;
             border: 3px solid #32256b;
-            border-radius: 5rem;
-            padding: 0.5rem 1rem;
+            border-radius: 10rem;
+            margin-left: 10rem;
+            padding: 1rem 1.5rem;
             font-weight: 600;
             text-decoration: none;
             cursor: pointer;
+            position: relative;
+            top: -8.5rem;
         }
         .link-button:hover {
             background-color: #32256b;
             color: #ffffff;
         }
-        .tool-button {
-            font-family: 'Outfit', sans-serif;
-            background-color: #ffffff;
-            font-weight: 600;
-            color: #353535;
-            border: 3px solid #32256b;
-            border-radius: 5rem;
-            position: relative;
-            margin-right: 0.6rem;
-            top: -5rem;
-            left: 10rem;
-            padding: 0.5rem;
-        }
-        .tool-button:hover {
-            background-color: #32256b;
-            color: #ffffff;
-            cursor: pointer;
-        }
-        img {
-            width: 100px;
-            height: 100px;
-            border-radius: 1rem;
-            margin-bottom: 1rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-        }
-        .title {
-            font-family: 'Fraunces', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #32256b;
-            margin-bottom: 0.5rem;
-            position: relative;
-            top: -1rem;
-            text-indent: 1rem;
-        }
-        .side-panel {
-            overflow: visible;
-        }
-        .logo-frame {
-            position: relative;
-            width: 100px;
-            margin-bottom: 1rem;
-        }
-        .logo-frame::before {
-            content: "";
+
+        /* ---- Floating "dancing" images ---- */
+        .dance-field {
             position: absolute;
-            top: 10px;
-            left: -10px;
-            width: 100px;
-            height: 100px;
-            border: 4px solid #ff8552;
-            border-radius: 1rem;
-            transform: rotate(-8deg);
-            z-index: 0;
-        }
-        .logo-frame img {
-            position: relative;
+            top: -100px;
+            right: -10px;
+            width: 40%;
+            height: 100%;
+            pointer-events: none;
             z-index: 1;
-            margin-bottom: 0;
         }
-        .side-panel::after {
-            content: "";
+        .dance-img {
             position: absolute;
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background-color: #ffd23f;
-            bottom: 30px;
-            right: 24px;
+            width: 130px;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 1.2rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            animation: dance 7s ease-in-out infinite;
         }
-        .description {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1rem;
-            color: #535353;
-            position: relative;
-            top: -1rem;
+
+        @keyframes dance {
+            0%   { transform: translate(0, 0) rotate(var(--r, 0deg)); }
+            25%  { transform: translate(12px, -18px) rotate(calc(var(--r, 0deg) + 4deg)); }
+            50%  { transform: translate(-8px, -6px) rotate(calc(var(--r, 0deg) - 3deg)); }
+            75%  { transform: translate(10px, 10px) rotate(calc(var(--r, 0deg) + 2deg)); }
+            100% { transform: translate(0, 0) rotate(var(--r, 0deg)); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .dance-img { animation: none; }
         }
     </style>
 </head>
 <body>
+    <script src="loading-screen.js" defer></script>
     <div class="geo-field" aria-hidden="true">
         <div class="geo geo-triangle geo-float" style="top: 4rem; left: 4rem; --r: -12deg; transform: rotate(-12deg);"></div>
         <div class="geo geo-circle-outline geo-float" style="width: 60px; height: 60px; top: 9rem; left: 2.5rem; animation-delay: .8s;"></div>
@@ -278,79 +223,19 @@
         <div class="geo geo-circle-outline geo-float" style="width: 26px; height: 26px; top: 5rem; left: 60%; animation-delay: 1.9s;"></div>
     </div>
 
-    <h1 class="hero">Tools that actually <br><span class="hero2">Work.</span></h1>
+    <h1 class="hero">Good Morning <br><span class="hero2">Everyone.</span></h1>
     <svg class="scribble-underline" width="220" height="24" viewBox="0 0 220 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path d="M4 16C40 4 80 4 110 14C140 24 180 6 216 12" stroke="#ff8552" stroke-width="5" stroke-linecap="round"/>
     </svg>
-    <p class="help">Stop wasting hours searching for the right software. This collection features five tools built specifically with students in mind, providing everything you need to manage your time effectively, boost your focus, and stay on top of your tasks this semester.</p>
-    
-    <button class="tool-button" onclick="showPanel('panel-1')">Habitica</button>
-    <button class="tool-button" onclick="showPanel('panel-2')">Thetawave AI</button>
-    <button class="tool-button" onclick="showPanel('panel-3')">Piktochart</button>
-    <button class="tool-button" onclick="showPanel('panel-4')">LexieLearn</button>
-    <button class="tool-button" onclick="showPanel('panel-5')">Forks AI</button>
-    <a class="link-button" href="aboutus.html" style="position: relative; top: -5rem; left: 9.7rem;">About Us</a>
-    <button class="tool-button" onclick="closeAllPanels()">Close</button>
+    <p class="help">We are the Group #4</p>    
+    <a class="link-button" href="aboutus.html">Get Started</a>
 
-    <div id="panel-1" class="side-panel">
-    <div class="logo-frame"><img src="habitica.jpg" alt="HabiticaLogo"></div>
-    <h2 class="title">Habitica</h2>
-    <p class="description">This is a simple description for Habitica.</p>
-    <a class="link-button" href="habitica.html">More about Habitica</a>
-    <a class="link-button" href="https://habitica.com/static/home">Try It Now</a>
+    <div class="dance-field" aria-hidden="true">
+        <img class="dance-img" src="habitica.jpg" alt="" style="top: 8%;  left: 10%; width: 130px; height: 130px; --r: -6deg;  animation-delay: 0s;">
+        <img class="dance-img" src="piktochart.jpg" alt="" style="top: 22%; left: 55%; width: 110px; height: 110px; --r: 8deg;   animation-delay: 1.2s;">
+        <img class="dance-img" src="forks.jpg" alt="" style="top: 42%; left: 20%; width: 150px; height: 150px; --r: -4deg;  animation-delay: 2.4s;">
+        <img class="dance-img" src="lexielearn.jpg" alt="" style="top: 60%; left: 60%; width: 120px; height: 120px; --r: 5deg;   animation-delay: 3.6s;">
+        <img class="dance-img" src="thetawave.jpg" alt="" style="top: 78%; left: 15%; width: 135px; height: 135px; --r: -8deg;  animation-delay: 4.8s;">
     </div>
-
-    <div id="panel-2" class="side-panel">
-    <div class="logo-frame"><img src="thetawave.jpg" alt="ThetawaveAILogo"></div>
-    <h2 class="title">Thetawave AI</h2>
-    <p class="description">This is a simple description for Thetawave AI.</p>
-    <a class="link-button" href="thetawave.html">More about Thetawave AI</a>
-    <a class="link-button" href="https://thetawave.ai/">Try It Now</a>
-    </div>
-
-    <div id="panel-3" class="side-panel">
-    <div class="logo-frame"><img src="piktochart.jpg" alt="PiktochartLogo"></div>
-    <h2 class="title">Piktochart</h2>
-    <p class="description">This is a simple description for Piktochart.</p>
-    <a class="link-button" href="piktochart.html">More about Piktochart</a>
-    <a class="link-button" href="https://piktochart.com/?nab=1">Try It Now</a>
-    </div>
-
-    <div id="panel-4" class="side-panel">
-    <div class="logo-frame"><img src="lexielearn.jpg" alt="LexieLearnLogo"></div>
-    <h2 class="title">LexieLearn</h2>
-    <p class="description">This is a simple description for LexieLearn.</p>
-    <a class="link-button" href="lexielearn.html">More about LexieLearn</a>
-    <a class="link-button" href="https://www.lexielearn.com/">Try It Now</a>
-    </div>
-
-    <div id="panel-5" class="side-panel">
-    <div class="logo-frame"><img src="forks.jpg" alt="ForksAILogo"></div>
-    <h2 class="title">Forks AI</h2>
-    <p class="description">This is a simple description for Forks AI.</p>
-    <a class="link-button" href="forks.html">More about Forks AI</a>
-    <a class="link-button" href="https://forksai.app/">Try It Now</a>
-    </div>
-    <script>
-        function showPanel(targetId) {
-        const panels = document.querySelectorAll('.side-panel');
-        
-        panels.forEach(panel => {
-            panel.classList.remove('active');
-        });
-
-        const targetPanel = document.getElementById(targetId);
-        if (targetPanel) {
-            targetPanel.classList.add('active');
-        }
-        }
-
-        function closeAllPanels() {
-        const panels = document.querySelectorAll('.side-panel');
-        panels.forEach(panel => {
-            panel.classList.remove('active');
-        });
-        }
-    </script>
 </body>
 </html>
