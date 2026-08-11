@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AppThatYouNeed</title>
+    <title>ToolsThatYouNeed</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,600&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
@@ -168,8 +168,7 @@
             background-color: #32256b;
             color: #ffffff;
         }
-        .more-about-link,
-        .try-it-link {
+        .link-button {
             display: inline-block;
             font-family: 'Outfit', sans-serif;
             font-size: 0.9rem;
@@ -182,8 +181,7 @@
             text-decoration: none;
             cursor: pointer;
         }
-        .more-about-link:hover,
-        .try-it-link:hover {
+        .link-button:hover {
             background-color: #32256b;
             color: #ffffff;
         }
@@ -291,46 +289,47 @@
     <button class="tool-button" onclick="showPanel('panel-3')">Piktochart</button>
     <button class="tool-button" onclick="showPanel('panel-4')">LexieLearn</button>
     <button class="tool-button" onclick="showPanel('panel-5')">Forks AI</button>
+    <a class="link-button" href="aboutus.html" style="position: relative; top: -5rem; left: 9.7rem;">About Us</a>
     <button class="tool-button" onclick="closeAllPanels()">Close</button>
 
     <div id="panel-1" class="side-panel">
     <div class="logo-frame"><img src="habitica.jpg" alt="HabiticaLogo"></div>
     <h2 class="title">Habitica</h2>
     <p class="description">This is a simple description for Habitica.</p>
-    <a class="more-about-link" href="habitica.html">More about Habitica</a>
-    <a class="try-it-link" href="https://habitica.com/static/home">Try It Now</a>
+    <a class="link-button" href="habitica.html">More about Habitica</a>
+    <a class="link-button" href="https://habitica.com/static/home">Try It Now</a>
     </div>
 
     <div id="panel-2" class="side-panel">
     <div class="logo-frame"><img src="thetawave.jpg" alt="ThetawaveAILogo"></div>
     <h2 class="title">Thetawave AI</h2>
     <p class="description">This is a simple description for Thetawave AI.</p>
-    <a class="more-about-link" href="thetawave.html">More about Thetawave AI</a>
-    <a class="try-it-link" href="https://thetawave.ai/">Try It Now</a>
+    <a class="link-button" href="thetawave.html">More about Thetawave AI</a>
+    <a class="link-button" href="https://thetawave.ai/">Try It Now</a>
     </div>
 
     <div id="panel-3" class="side-panel">
     <div class="logo-frame"><img src="piktochart.jpg" alt="PiktochartLogo"></div>
     <h2 class="title">Piktochart</h2>
     <p class="description">This is a simple description for Piktochart.</p>
-    <a class="more-about-link" href="piktochart.html">More about Piktochart</a>
-    <a class="try-it-link" href="https://piktochart.com/?nab=1">Try It Now</a>
+    <a class="link-button" href="piktochart.html">More about Piktochart</a>
+    <a class="link-button" href="https://piktochart.com/?nab=1">Try It Now</a>
     </div>
 
     <div id="panel-4" class="side-panel">
     <div class="logo-frame"><img src="lexielearn.jpg" alt="LexieLearnLogo"></div>
     <h2 class="title">LexieLearn</h2>
     <p class="description">This is a simple description for LexieLearn.</p>
-    <a class="more-about-link" href="lexielearn.html">More about LexieLearn</a>
-    <a class="try-it-link" href="https://www.lexielearn.com/">Try It Now</a>
+    <a class="link-button" href="lexielearn.html">More about LexieLearn</a>
+    <a class="link-button" href="https://www.lexielearn.com/">Try It Now</a>
     </div>
 
     <div id="panel-5" class="side-panel">
     <div class="logo-frame"><img src="forks.jpg" alt="ForksAILogo"></div>
     <h2 class="title">Forks AI</h2>
     <p class="description">This is a simple description for Forks AI.</p>
-    <a class="more-about-link" href="forks.html">More about Forks AI</a>
-    <a class="try-it-link" href="https://forksai.app/">Try It Now</a>
+    <a class="link-button" href="forks.html">More about Forks AI</a>
+    <a class="link-button" href="https://forksai.app/">Try It Now</a>
     </div>
     <script>
         function showPanel(targetId) {

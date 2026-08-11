@@ -1,6 +1,85 @@
-    body {
+body {
             background-color: #fffae2;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-        } 
+            overflow-x: hidden;
+            position: relative;
+            background-image:
+                radial-gradient(circle, rgba(50,37,107,0.13) 1.4px, transparent 1.4px);
+            background-size: 28px 28px;
+        }
+
+        /* ---- Decorative geometry layer ---- */
+        .geo-field {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .geo {
+            position: absolute;
+            opacity: 0.9;
+        }
+        .geo-triangle {
+            width: 0;
+            height: 0;
+            border-left: 22px solid transparent;
+            border-right: 22px solid transparent;
+            border-bottom: 38px solid #ff8552;
+        }
+        .geo-circle-outline {
+            border-radius: 50%;
+            border: 4px solid #32256b;
+        }
+        .geo-circle-fill {
+            border-radius: 50%;
+            background-color: #ffd23f;
+        }
+        .geo-square {
+            border: 4px solid #ff8552;
+            transform: rotate(18deg);
+        }
+        .geo-plus {
+            position: absolute;
+        }
+        .geo-plus::before,
+        .geo-plus::after {
+            content: "";
+            position: absolute;
+            background-color: #32256b;
+        }
+        .geo-plus::before {
+            width: 26px;
+            height: 4px;
+            top: 11px;
+            left: 0;
+        }
+        .geo-plus::after {
+            width: 4px;
+            height: 26px;
+            top: 0;
+            left: 11px;
+        }
+        .geo-dash {
+            border-bottom: 4px dashed #32256b;
+        }
+
+        @keyframes drift {
+            0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
+            50% { transform: translateY(-16px) rotate(var(--r, 0deg)); }
+        }
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .geo-float { animation: drift 6s ease-in-out infinite; }
+        .geo-spin { animation: spin-slow 18s linear infinite; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .geo-float, .geo-spin { animation: none; }
+        }
